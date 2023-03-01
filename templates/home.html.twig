@@ -1,15 +1,13 @@
-{# templates/base.html.twig #}
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8" />
-    <title>{% block title %}Welcome!{% endblock %}</title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    />
-     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
-         <link rel="stylesheet" type="text/css" media="screen" href="/styles/slide.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>{% block title %}Welcome our shop!{% endblock %}</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/slide.css" />
     
     <!-- Google Fonts Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
@@ -18,9 +16,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Custom styles -->
-    
-    {% block stylesheets %}{% endblock %}
-  </head>
+    <link rel="stylesheet" href="{{asset("styles/style.css")}}" />
+</head>
 
             <div class="header-middle" style="background-color:Orange;height: 120px; ">
                 <!--header-middle-->
@@ -47,7 +44,7 @@
       <!-- Navbar brand -->
       <a class="navbar-brand mt-2 mt-sm-0" href="{{path('homepage')}}">
         <img
-          src="/uploads/logo.png"
+          src="uploads/logo.png"
           height="100%"
           width="100"
           alt="Logo"
@@ -55,12 +52,9 @@
           style="border-radius:10px"
         />
       </a>
-
     <style>
       ul li a:hover{
-  background: Orange;
-  border-radius:40%;
-  
+  background: Orange;  
 }
       </style>
       <!-- Left links -->
@@ -69,7 +63,10 @@
           <a class="nav-link" style="font-weight: bold; color:white" href="{{path('homepage')}}">Home</a>
         </li>
         <br>
-                   <div class="dropdown">
+        {# <li class="nav-item">
+          <a class="nav-link" style="font-weight: bold; color:white" href="{{path('product_show')}}">Product</a>
+        </li> #}
+            <div class="dropdown">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"  style="background-color: crimson;">
           Manage
         </a>
@@ -95,16 +92,17 @@
       
       {% if app.user %}
           
-          {# <a class="nav-link me-3" href="#">
+          <a class="nav-link me-3" href="#">
             <i class="fas fa-shopping-cart"></i>
-          </a> #}
-          {# <a style="color:blue; font-weight:bold"><a> #}
-           <a href="{{path('editprofile')}}"type="button" class="btn btn-outline-warning" style="color:white; font-weight:bold">Hi {{ app.user.name }}!</a>
+          </a>
+          <a href="{{path('editprofile')}}"type="button" class="btn btn-outline-warning" style="color:white; font-weight:bold">Hi {{ app.user.name }}!</a>
           <a class="nav-link me-3" href="{{ path('app_logout') }}" style=" color: white;font-weight: bold; " <i class="fa fa-lock" ></i>Logout</a>
         {% else %}
         <a class="nav-link" href="{{ path('app_login') }}" style="  color: white;font-weight: bold;"><i class="fa fa-lock" ></i>Login</a></li></a>
         
           <a class="nav-link" href="{{ path('app_register') }}" style="color: white; font-weight: bold;"><i class="fa fa-star" ></i>Register</a>
+
+          
         
         {% endif %}
 
@@ -121,27 +119,199 @@
   </div>
   <!-- Container wrapper -->
 </nav>
-  <body>
-    {# <nav
-      class="navbar navbar-expand-lg"
-      style="height: 70px; background-color:RoyalBlue"
-    >
-      <a class="navbar-brand" href="{{path('homepage')}}" style="font-weight: bold; color:white">Symfony</a>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
-      <ul class="nav navbar-nav navbar-right">
-        {% if app.user %}
-        <li><a class="nav-link" href="{{ path('app_logout') }}" style ="font-weight: bold; color:white">Logout</a></li>
-        {% else %}
-        <li><a class="nav-link" href="{{ path('app_login') }}" style="font-weight: bold; color:white">Login</a></li>
-        <li>
-          <a class="nav-link" href="{{ path('app_register') }}" style="font-weight: bold; color:white">Register</a>
-        </li>
-        {% endif %}
-      </ul>
-    </nav>#}
-    {% block body %}{% endblock %} {% block javascripts %}{% endblock %}
-  </body>
+<!-- Navbar -->
+   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <div style="height: 70px"></div>
+
+<!-- Slide -->
+
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="templates/slide.css">
+<style>
+.mySlides {display:none;}
+</style>
+<body>
+<link rel="stylesheet" href="slide.css">
+        <div class="wrapper">
+          <main class="main ">
+            <div class="slide">
+            <div class="portfolio">
+              <section class="portfolio_items">
+                <figure class="portfolio_item">
+                 <li>
+						<img src="uploads/h4-slide.png" alt="Slide" style="height: 600px; width:1800px">
+						<div class="caption-group">
+							<h2 class="caption title">
+								IPhone <span class="primary">6 <strong>Plus</strong></span>
+							</h2>
+							<h4 class="caption subtitle">Dual SIM</h4>
+							<a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>
+						</div>
+					</li>
+                </figure>
+          
+                <figure class="portfolio_item">
+                     <li>
+						<img src="uploads/h4-slide4.png" alt="Slide" style="height: 600px; width:1800px">
+						<div class="caption-group">
+							<h2 class="caption title">
+								by one, get one <span class="primary">50% <strong>off</strong></span>
+							</h2>
+							<h4 class="caption subtitle">New technology for users</h4>
+							<a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>
+						</div>
+					</li>
+                </figure>
+
+                <figure class="portfolio_item">
+                   <li>
+						<img src="uploads/h4-slide3.png" alt="Slide" style="height: 600px; width:1800px">
+						<div class="caption-group">
+							<h2 class="caption title">
+								Apple <span class="primary">Store <strong>Ipod</strong></span>
+							</h2>
+							<h4 class="caption subtitle">Select Item</h4>
+							<a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>
+						</div>
+					</li>
+                </figure>
+
+                <figure class="portfolio_item">
+                 <li>
+						<img src="uploads/h4-slide2.png" alt="Slide" style="height: 600px; width:1800px">
+						<div class="caption-group">
+							<h2 class="caption title">
+								Apple <span class="primary">Store <strong>Ipod</strong></span>
+							</h2>
+							<h4 class="caption subtitle"> Phone</h4>
+							<a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>
+						</div>
+					</li>
+                </figure>
+
+              </section>
+            </div>
+          </div>
+          </main>
+        </div>
+      
+
+
+</body>
 </html>
+
+<!-- End slider area -->
+<!-- End SLide -->
+
+
+{% block body %}
+ <!--Main layout-->
+<main>
+<div class="container">
+  <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark mt-3 mb-5 shadow p-2">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="#" style="color:black">Categories:</a>
+
+    <!-- Toggle button -->
+    <button 
+       class="navbar-toggler" 
+       type="button" 
+       data-bs-toggle="collapse" 
+       data-bs-target="#navbarSupportedContent2">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" style="height: 47px;"id="navbarSupportedContent2">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <!-- Link -->
+        <li class="nav-item acitve" >
+          <a class="nav-link" href="#" style="color:black">All</a>
+        </li>
+
+      </ul>
+
+      <!-- Search -->
+      <form class="w-auto py-1" style="max-width: 12rem" action="/search" method="POST" >
+            <input id="search-input" type="search" id="form1" class="form-control" name="search" style="margin-left: -15%;margin-top: 12%;"/>
+             <button type="submit" class="btn btn-primary" style="margin-left: 86%;
+    margin-top: -35%;">
+                <i class="fas fa-search"></i>
+      </form >
+      
+
+  </button>
+
+    </div>
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+  
+<!-- Products -->
+  <section>
+  <div class="text-center">
+    <div class="row">
+      {% for p in products %}
+        <div class="col-lg-3 col-md-6 mb-4" style="background-color: yellow;">
+        <div class="card">
+          <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+            data-mdb-ripple-color="light">
+            {% set img = p.image %}
+            <img src="{{asset('uploads/'~img)}}"
+              class="w-100" />
+          </div>
+          <div class="card-body">
+            <a href="{{path('product_read',{"id":p.id})}}" class="text-reset">
+              <button class="btn btn-outline-warning">{{p.name}}</button>
+              <button class="btn btn-outline-warning">{{p.price}}$</button>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>   
+  </div>
+</section>
+{# <div class="container">
+        <div class="row mt-3 mb-4">
+            <div class="col-md-4">
+                  {% for p in products %}
+                    {% set img = p.image %}
+                <img src="{{asset('uploads/'~img)}}" alt="{{ p.name }}" class="img-fluid">
+            </div>
+            <div class="col-md-8">
+                <h1 class="mt-4 mt-md-0">{{ p.name }}</h1>
+                <h2>{{ p.price }} €</h2>
+                <hr>
+                <form class="mt-4 p-4 bg-light" method="post">
+                    <div class="form-group">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" class="form-control" id="quantity">
+                    </div>
+                    <button class="btn btn-warning">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+              {% endfor %}
+    </div>
+</div> #}
+</main>
+ <!--Main layout-->
+
+
+ 
      <footer id="footer" class="footer-1">
         <div class="main-footer widgets-dark typo-light">
             <div class="container">
@@ -156,7 +326,7 @@
 
                     <div class="col-xs-12 col-sm-6 col-md-3">
                         <div class="widget no-box">
-                            <h5 class="widget-title">Quick Links<span></span></h5>
+                            <h5 class="widget-title" style="text-decoration: none">Quick Links<span></span></h5>
                             <ul class="thumbnail-widget">
                                 <li>
                                     <div class="thumb-content"><a href="#.">Get Started</a></div>
@@ -244,4 +414,10 @@
         </div>
     </div> 
 
+
+{% endblock %}
+
+
+</body>
+</html>
 
