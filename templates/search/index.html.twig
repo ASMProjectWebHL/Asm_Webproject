@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{# {% block title %}Hello SearchController!{% endblock %} #}
+
+{% block body %}
+<div class="container mt-3">
+  <h2>Result</h2>
+  <div class="row">
+   {% for p in search %}
+        <div class="col-lg-3 col-md-6 mb-4" style="background-color: aqua;">
+        <div class="card">
+          <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+            data-mdb-ripple-color="light">
+            {% set img = p.image %}
+            <img src="{{asset('uploads/'~img)}}"
+              class="w-100"/>
+          </div>
+          <div class="card-body">
+            <a href="{{path('product_read',{"id":p.id})}}" class="text-reset">
+              <h5 class="card-title mb-2">{{p.name}}</h5>
+            </a>
+            <h6 class="mb-3 price">{{p.price}}$</h6>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+  </div>
+</div>
+{% endblock %}
