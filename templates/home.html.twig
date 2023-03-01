@@ -73,11 +73,11 @@
 
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <li><a class="dropdown-item" href="{{path('product_show')}}">Product</a></li>
-          <li><a class="dropdown-item" href="{{path('category_show')}}">Category</a></li>
+          {# <li><a class="dropdown-item" href="{{path('category_show')}}">Category</a></li> #}
         </ul>
       </div>
             <li class="nav-item active">
-          <a class="nav-link" style="font-weight: bold;color:white" href="{{path('app_contact')}}"> Contact </a>
+          {# <a class="nav-link" style="font-weight: bold;color:white" href="{{path('app_contact')}}"> Contact </a> #}
         </li>
             <li class="nav-item active">
           <a class="nav-link " style="font-weight: bold;color:white" href="{{path('app_aboutus')}}">About Us</a>
@@ -95,7 +95,8 @@
           <a class="nav-link me-3" href="#">
             <i class="fas fa-shopping-cart"></i>
           </a>
-          <a href="{{path('editprofile')}}"type="button" class="btn btn-outline-warning" style="color:white; font-weight:bold">Hi {{ app.user.name }}!</a>
+          {# href="{{path('editprofile')}}" #}
+          <a type="button" class="btn btn-outline-warning" style="color:white; font-weight:bold">Hi {{ app.user.name }}!</a>
           <a class="nav-link me-3" href="{{ path('app_logout') }}" style=" color: white;font-weight: bold; " <i class="fa fa-lock" ></i>Logout</a>
         {% else %}
         <a class="nav-link" href="{{ path('app_login') }}" style="  color: white;font-weight: bold;"><i class="fa fa-lock" ></i>Login</a></li></a>
@@ -107,7 +108,7 @@
         {% endif %}
 
       <!-- Icon -->
-       <a class="nav-link me-3" href="{{path('app_cart')}}" style="color: white; font-weight: bold;">
+       {# <a class="nav-link me-3" href="{{path('app_cart')}}" style="color: white; font-weight: bold;"> #}
         <i class="fas fa-shopping-cart">Cart</i>
       </a>
       {# <a class="nav-link me-3" href="#">
