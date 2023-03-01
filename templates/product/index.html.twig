@@ -37,7 +37,7 @@
                                   {% set img = p.image %}
                                 <img src="{{asset('uploads/'~img)}}"class=""style="height: 200px; width: 200px;border-radius: 48px;"/>
                                   </td>
-                                  <td>{{ p.procat.name}}</td>
+                                  {# <td>{{ p.procat.name}}</td> #}
                                   <td>
                                     <a href="{{path('product_edit',{'id':p.id})}}"><button type="button" class="btn btn-warning">Update</button></a>
                                     <a href="{{path('product_delete',{'id':p.id})}}"><button type="button" class="btn btn-danger">Delete</button></a>
