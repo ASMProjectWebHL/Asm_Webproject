@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="container">
+       <div class="row">
+           <div class="col-sm-4">
+               <h2 class=page-header>Contact Form in Symfony</h2>
+                   {% if app.user != null %}
+                   {{form_start(form)}}
+                   {{form_widget(form)}}
+                   {{form_end(form)}}
+                       {% endif %}
+           </div>
+                 {% if app.user == null %}
+      <a href="{{ path('app_login') }}" class="btn btn-info">
+        You need to login to see the list 😜😜 >></a>
+      {% endif %}
+                                          <!-- Display message -->
+                        {% for message in app.flashes('success') %}
+                        <div class="alert alert-success">
+                              {{ message }}
+                       </div>
+                        {% endfor %}
+              <!-- End display message -->
+       </div>
+</div>
+{% endblock %}
