@@ -118,9 +118,22 @@ class ProductController extends AbstractController
         return $this->render("product/form.html.twig",[
             'form' => $form->createView()
         ]);
+
+        
     
 
     }
+
+    /**
+     * @Route("/delete/{id}",name="product_delete",requirements={"id"="\d+"})
+     */
+    
+     public function deleteAction(Request $request, Product $p): Response
+     {
+         $this->repo->remove($p,true);
+         $this->addFlash('success','The product has been removed');
+         return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
+     }
 
 
 
