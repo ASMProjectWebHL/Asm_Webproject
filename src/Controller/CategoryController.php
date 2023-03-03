@@ -30,5 +30,24 @@ class CategoryController extends AbstractController
         ]);
     }
 
+        /**
+     * @Route("/addcategory", name="category_create")
+     */
+    public function createAction(Request $req, SluggerInterface $slugger): Response
+    {
+        
+        $c = new Category();
+        $form = $this->createForm(CategoryType::class, $c);
+        $form->handleRequest($req);
+        if($form->isSubmitted() && $form->isValid()){
+            $this->repo->save($c,true);
+            $this->addFlash('success','You have successfully updated your profile!');
+            return $this->redirectToRoute('category_create', [], Response::HTTP_SEE_OTHER);
+        }
+        return $this->render("category/form.html.twig",[
+            'form' => $form->createView()
+        ]);
+    }
+
 
 }
