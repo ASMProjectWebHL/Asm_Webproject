@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Controller;
+
+use App\Entity\Category;
+use App\Form\CategoryType;
+use App\Repository\CategoryRepository;
+use App\Repository\ProductRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
+
+class CategoryController extends AbstractController
+{
+    private CategoryRepository $repo;
+    public function __construct(CategoryRepository $repo)
+   {
+      $this->repo = $repo;
+   }
+    /**
+     * @Route("/category", name="category_show")
+     */
+    public function readAllAction(): Response
+    {
+        $categorys = $this->repo->findAll();
+        return $this->render('category/index.html.twig', [
+            'cate'=>$categorys
+        ]);
+    }
+
+
+}
