@@ -34,4 +34,29 @@ class CartController extends AbstractController
      ]);
    }
 
+   /**
+    * @Route("/addcart/{id}", name="add_cart", requirements={"id"="\d+"})
+    */
+    public function addCart(Product $p,Request $req, CartRepository $repo): Response
+    {
+         $qty = $req->query->get('quantity_input');
+ 
+         $card = new Cart();
+         $card->setQuantity($qty);
+         $card->setCartpro($p);
+         $card->setCartuser($this->getUser());
+         $repo->save($card, true);
+         $this->addFlash('success','Add cart successfully');
+        return $this->redirectToRoute('app_cart', [], Response::HTTP_SEE_OTHER);
+    }
+    
+
+/**
+     * @Route("/cart/delete/{id}", name="remove_cart")
+     */
+    public function deleteCart(Request $req, Cart $cart, CartRepository $repo): Response
+    {
+        $repo->remove($cart,true);
+        return $this->redirectToRoute('app_cart');
+    }
 }
