@@ -49,5 +49,38 @@ class CategoryController extends AbstractController
         ]);
     }
 
+     /**
+     * @Route("/editcategory/{id}", name="category_edit",requirements={"id"="\d+"})
+     */
+    public function editAction(Request $req, Category $c,
+    SluggerInterface $slugger): Response
+    {
+        
+        $form = $this->createForm(CategoryType::class, $c);   
+
+        $form->handleRequest($req);
+        if($form->isSubmitted() && $form->isValid()){
+            $this->addFlash('success','You have successfully added the product!');
+            $this->repo->save($c,true);
+            return $this->redirectToRoute('category_show', [], Response::HTTP_SEE_OTHER);
+
+        }
+        return $this->render("category/form.html.twig",[
+            'form' => $form->createView()
+        ]);
+
+    }
+
+     /**
+     * @Route("/deletecategory/{id}",name="category_delete",requirements={"id"="\d+"})
+     */
+    
+     public function deleteAction(Request $request, Category $c): Response
+     {
+         $this->repo->remove($c,true);
+         $this->addFlash('success','The product has been removed');
+         return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
+     }
+
 
 }
