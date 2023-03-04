@@ -34,10 +34,10 @@ class ProductType extends AbstractType
             'required'=> false
         ])
 
-        // ->add('procat', EntityType::class,[
-        //     'class'=>Category::class,
-        //     'choice_label'=>'name'
-        // ])
+        ->add('procat', EntityType::class,[
+            'class'=>Category::class,
+            'choice_label'=>'name'
+        ])
 
         ->add('save', SubmitType::class,[
             'label'=> "Confirm"
