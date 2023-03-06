@@ -35,7 +35,7 @@ security:
     access_control:
         - { path: ^/product/show, roles: ROLE_ADMIN }
         - { path: ^/category, roles: ROLE_ADMIN }
-        # - { path: ^/cart, roles: ROLE_ADMIN }
+        - { path: ^/contactshow, roles: ROLE_ADMIN }
         - { path: ^/cart, roles: ROLE_USER }
         - { path: ^/list, roles: ROLE_USER }
 

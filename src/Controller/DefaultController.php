@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Contact;
+use App\Repository\ContactRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,6 +14,11 @@ use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 
 class DefaultController extends AbstractController
 {
+  private ContactRepository $repo;
+  public function __construct(ContactRepository $repo)
+ {
+    $this->repo = $repo;
+ }
     /**
     * @Route("/contact", name="app_contact")
     */
@@ -53,4 +59,14 @@ class DefaultController extends AbstractController
 ]);
 
 }
+ /**
+     * @Route("/contactshow", name="contact_show")
+     */
+    public function ShowAllAction(): Response
+    {
+        $contact = $this->repo->findAll();
+        return $this->render('default/show.html.twig', [
+            'con'=>$contact
+        ]);
+    }
 }

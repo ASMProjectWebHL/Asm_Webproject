@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+  <div className="page-heading pb-2 mt-4 mb-2 ">
+                    <h3>Conact of user</h3> 
+                    <a href="{{path('homepage')}}"><button type="button" class="btn btn-primary">Back To Home</button></a>
+                </div>
+                <div class="page-content">
+                <div class="btn-group" role="group" aria-label="Basic outlined example">
+               
+                </div>
+                <div class="card">
+                    <div class="container">
+                        <div class="table-responsive text-nowrap">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Topic</th>
+                            <th>Message</th>
+                          </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0" style="background-color: ghostwhite;">
+                          {% for c in con %}
+                              <tr>
+                                  <td>{{ c.id}}</td>
+                                  <td>{{ c.name}}</td>
+                                  <td>{{ c.email}}</td>
+                                  <td>{{ c.topic}}</td>
+                                  <td>{{ c.message}}</td>
+                              </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                      <!-- Display message -->
+              <!-- End display message -->
+                </div>
+                </div>
+                </div>
+{% endblock %}
